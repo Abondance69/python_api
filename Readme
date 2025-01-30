@@ -1,0 +1,18 @@
+
+## Run Flask
+```bash
+python run.py
+
+// Exemple 
+cd "movie backend"
+python run.py
+```
+
+## Run React
+```bash
+npm run dev
+
+// Exemple 
+cd "movie db app"
+npm run dev
+```
