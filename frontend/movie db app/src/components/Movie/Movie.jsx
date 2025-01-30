@@ -5,62 +5,31 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons/faHeart";
 
 export default function Movie() {
-    const { id } = useParams();
-    const { data, loading, error } = useGetMovie(id);
-    const title = data.title;
+  const { id } = useParams();
+  const { data, loading, error } = useGetMovie(id);
+  const title = data.titre ?? "";
+  const date_sortie = data.date_sortie ?? "";
+  const src = `${process.env.REACT_APP_MOVIES_IMAGE}/${data.image}`;
 
-    console.log(data);
-    console.log(loading);
-    console.log(error);
-
-    const src = `${process.env.REACT_APP_MOVIES_IMAGE}/${data.image}`;
-
-    return (
-        <div className="h-full min-h-screen max-w-full bg-slate-950 p-4">
-            <div className="flex">
-                <div className="border">
-                    <div className="card-image">
-                        <div className="max-w-96 m-2  rounded shadow">
-                            <div className="h-5/6">
-                                <img
-                                    className="w-full h-full object-cover cove"
-                                    src={src}
-                                    alt="poster"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="border flex-auto p-4 mx-4">
-                    <div className="flex justify-between items-center">
-                        <h1 className="text-3xl text-white">
-                            {title}{" "}
-                            <span className="text-slate-300">(2023)</span>
-                        </h1>
-
-                        <FontAwesomeIcon icon={faHeart} className="icon" />
-                    </div>
-
-                    <div>
-                        <span>25/01/2022(FR)</span>
-
-                        <span className="mx-3">
-                            <Link to="/" className="mx-1 text-red-600">
-                                Action
-                            </Link>
-                            <Link to="/" className="mx-1 text-red-600">
-                                Comédie
-                            </Link>
-                            <Link to="/" className="mx-1 text-red-600">
-                                Science-Fiction
-                            </Link>
-                        </span>
-
-                        <span>2h43m</span>
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className="h-full min-h-screen max-w-full bg-slate-950 p-4">
+      <div className="flex flex-col md:flex-row items-center md:items-start">
+        <div className="card-image max-h-96 m-2 rounded-lg overflow-hidden shadow-lg">
+          <img
+            className="w-full h-full object-cover rounded-lg transform scale-105 transition-all duration-300"
+            src={src}
+            alt="poster"
+          />
         </div>
-    );
+
+        <div className="flex flex-col justify-center p-4 mx-4 text-center md:text-left">
+          <h1 className="text-3xl text-white font-semibold mb-2">{title}</h1>
+
+          <div className="text-lg text-slate-300 mb-4">
+            <span>Date de sortie : {date_sortie}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

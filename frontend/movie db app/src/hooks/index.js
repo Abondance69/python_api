@@ -12,12 +12,11 @@ export function useGetPlaying() {
             .then((resolve) => {
                 setLoading(false);
                 setDatas(resolve.movies);
-                console.log(resolve);
             })
             .catch((error) => {
                 setLoading(true);
                 setError(false);
-                console.log("Une erreur est survenue ", error);
+                console.error("Une grosse erreur", error);
             });
     }, []);
 
@@ -35,7 +34,6 @@ export function useGetPopular(){
             .then((resolve) => {
                 setLoading(false);
                 setDatas(resolve.movies);
-                console.log(resolve);
             })
             .catch((error) => {
                 setLoading(true);
@@ -58,7 +56,6 @@ export function useGetComming(){
             .then((resolve) => {
                 setLoading(false);
                 setDatas(resolve.movies);
-                console.log(resolve);
             })
             .catch((error) => {
                 setLoading(true);
@@ -81,7 +78,6 @@ export function useGetRating(){
             .then((resolve) => {
                 setLoading(false);
                 setDatas(resolve.movies);
-                console.log(resolve);
             })
             .catch((error) => {
                 setLoading(true);
@@ -104,12 +100,11 @@ export function useGetMovie(id){
             .then((resolve) => {
                 setLoading(false);
                 setData(resolve);
-                console.log(resolve);
             })
             .catch((error) => {
                 setLoading(true);
                 setError(false);
-                console.log("Une grosse erreur", error);
+                console.error("Une grosse erreur", error);
             });
     }, [id]);
 

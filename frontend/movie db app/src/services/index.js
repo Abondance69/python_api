@@ -16,12 +16,11 @@ export default class MovieServices {
 
       const data = await response.json();
       return data;
-
     } catch (error) {
       console.log("Une erreur est survenue", error);
     }
   }
-  
+
   async getMoviesPopular() {
     const url = `${process.env.REACT_APP_URL_API_SITE}/api/movie/popular`;
 
